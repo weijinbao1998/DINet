@@ -13,7 +13,7 @@
 
 
 
-[![Paper](http://img.shields.io/badge/paper-arxiv.5811784-B31B1B.svg)](https://ieeexplore.ieee.org/abstract/document/10945918/)
+[![Paper]](https://ieeexplore.ieee.org/abstract/document/10945918/)
 
 ![Model Pipeline](image.png)
 
