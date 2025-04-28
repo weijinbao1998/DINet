@@ -1,4 +1,4 @@
-# Multi-Contrast MRI Arbitrary-Scale Super-Resolution via Dynamic Implicit Network
+# (IEEE TCSVT) Multi-Contrast MRI Arbitrary-Scale Super-Resolution via Dynamic Implicit Network
 
 
 <div align="center">
