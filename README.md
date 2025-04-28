@@ -1,10 +1,11 @@
-# SceneDreamer360: Text-Driven 3D-Consistent Scene Generation with Panoramic Gaussian Splatting
+# Multi-Contrast MRI Arbitrary-Scale Super-Resolution via Dynamic Implicit Network
+
 
 <div align="center">
 
 [**Jinbao Wei**](https://scholar.google.com/citations?user=KcKJI6MAAAAJ&hl=zh-CN),
 [**Gang Yang**](https://scholar.google.com/citations?user=gctrxXsAAAAJ&hl=zh-CN&oi=ao),
-[**Wei Wei**],
+[**Wei Wei**](https://orcid.org/0000-0003-4097-1592),
 [**Aiping Liu**](https://scholar.google.com/citations?user=vEDf62sAAAAJ&hl=zh-CN),
 [**Xun Chen**](https://scholar.google.com/citations?user=aBnUWyQAAAAJ&hl=zh-CN),
 
