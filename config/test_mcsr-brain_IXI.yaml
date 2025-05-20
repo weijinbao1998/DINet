@@ -1,0 +1,32 @@
+test_dataset:
+  dataset:
+    name: mc-image-folders
+    args:
+      root_path_1: /home/wjb/McASSR/dataset/real_world/tar_2
+      root_path_2: /home/wjb/McASSR/dataset/real_world/ref_2
+      # root_path_1: /ssd/dataset/pyw/dataset/IXI/test/T2_exp
+      # root_path_2: /ssd/dataset/pyw/dataset/IXI/test/PD_exp
+      # root_path_1: /ssd/dataset/pyw/dataset/IXI/test/T2_abl
+      # root_path_2: /ssd/dataset/pyw/dataset/IXI/test/PD_abl
+      # root_path_1: /ssd/dataset/pyw/dataset/IXI/test/T2_fig1
+      # root_path_2: /ssd/dataset/pyw/dataset/IXI/test/PD_fig1
+      first_k: 1
+
+  wrapper:
+    name: sr-implicit-downsampled
+    args:
+      scale_max: 2
+  batch_size: 1
+
+
+
+
+#eval_type: None
+#eval_bsize: None
+
+data_norm:
+  inp: {sub: [0.5], div: [0.5]}
+  ref: {sub: [0.5], div: [0.5]}
+  gt: {sub: [0.5], div: [0.5]}
+
+

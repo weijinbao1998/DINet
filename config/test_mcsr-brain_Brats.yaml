@@ -1,0 +1,34 @@
+test_dataset:
+  dataset:
+    name: mc-image-folders
+    args:
+      root_path_1: /ssd/dataset/pyw/dataset/Brats/test/t2
+      root_path_2: /ssd/dataset/pyw/dataset/Brats/test/t1
+      # root_path_1: /ssd/dataset/pyw/dataset/Brats/test/t2_exp
+      # root_path_2: /ssd/dataset/pyw/dataset/Brats/test/t1_exp
+      # root_path_1: /ssd/dataset/pyw/dataset/Brats/test/t2_fig1
+      # root_path_2: /ssd/dataset/pyw/dataset/Brats/test/t1_fig1
+      # root_path_1: /ssd/dataset/pyw/dataset/Brats/test/t2_LFP
+      # root_path_2: /ssd/dataset/pyw/dataset/Brats/test/t1_LFP
+      # root_path_2: /ssd/dataset/pyw/dataset/Brats/test/flair_LFP
+      first_k: 160
+
+  wrapper:
+    name: sr-implicit-downsampled
+    args:
+      scale_max: 8
+  batch_size: 8
+
+
+
+
+#eval_type: None
+#eval_bsize: None
+
+data_norm:
+  inp: {sub: [0.5], div: [0.5]}
+  ref: {sub: [0.5], div: [0.5]}
+  gt: {sub: [0.5], div: [0.5]}
+
+
+

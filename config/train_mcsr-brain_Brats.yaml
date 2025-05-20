@@ -1,0 +1,319 @@
+train_dataset:
+  dataset:
+    name: mc-image-folders
+    args:
+      root_path_1: /ssd/dataset/pyw/dataset/Brats/train/t2
+      root_path_2: /ssd/dataset/pyw/dataset/Brats/train/t1
+      first_k: 64
+      repeat: 1
+      cache: in_memory
+  wrapper:
+    name: sr-implicit-downsampled
+    args:
+      inp_size: 60
+      scale_max: 4
+      augment: true
+      sample_q: 3600
+  batch_size: 8
+
+tag: Normal
+
+val_dataset:
+  dataset:
+    name: mc-image-folders
+    args:
+      root_path_1: /ssd/dataset/pyw/dataset/Brats/val/t2
+      root_path_2: /ssd/dataset/pyw/dataset/Brats/val/t1
+      first_k: 16
+      repeat: 1
+      cache: in_memory
+  wrapper:
+    name: sr-implicit-downsampled
+    args:
+      inp_size: 60
+      scale_max: 4
+      sample_q: 3600
+  batch_size: 8
+
+data_norm:
+  inp: {sub: [0.5], div: [0.5]}
+  ref: {sub: [0.5], div: [0.5]}
+  gt: {sub: [0.5], div: [0.5]}
+
+
+
+model:
+  name: DINet
+  args:
+    encoder_spec:
+      name: rdn
+      args:
+        no_upsampling: true   
+    imnet_spec:
+      name: mlp
+      args:
+        out_dim: 1
+        hidden_list: [256, 256, 256]
+    hidden_dim: 256
+
+
+# model:
+#   name: btc
+#   args:
+#     encoder_spec:
+#       name: rdn
+#       args:
+#         no_upsampling: true   
+#     imnet_spec:
+#       name: mlp
+#       args:
+#         out_dim: 1
+#         hidden_list: [256, 256, 256]
+#     hidden_dim: 256
+
+# model:
+#   name: mc_arsr
+#   args:
+#     encoder_spec:
+#       name: rct
+#       args:
+#         no_upsampling: true
+#     imnet_spec:
+#       name: mlp
+#       args:
+#         out_dim: 1
+#         hidden_list: [256, 256, 256]
+#     hidden_dim: 256
+
+
+
+# model:
+#   name: metasr
+#   args:
+#     encoder_spec:
+#       name: rdn
+#       args:
+#         no_upsampling: true   
+
+
+
+
+# model:
+#   name: liif
+#   args:
+#     encoder_spec:
+#       name: rdn
+#       args:
+#         no_upsampling: true   
+#     imnet_spec:
+#       name: mlp
+#       args:
+#         out_dim: 1
+#         hidden_list: [256, 256, 256]
+
+
+
+
+
+
+# model:
+#   name: lit
+#   args:
+#     base_dim: 64    
+#     head: 8
+#     is_cell: True
+#     local_attn: True
+
+#     encoder_spec:
+#       name: rdn
+#       args:
+#         no_upsampling: True
+  
+#     pe_spec:
+#       name: posenc
+#       args:
+#         posenc_type: 'sinusoid'
+#         posenc_scale: 10
+#         hidden_dims: 64
+#         enc_dims: 64
+#         gamma: 1
+  
+#     imnet_spec:
+#       name: lit_mlp
+#       args:
+#         out_dim: 1
+#         hidden_list: [256,256,256,256]
+#         act: 'gelu'
+
+
+
+
+# model:
+#   name: ITNSR
+#   args:
+#     feat_unfold: True
+#     local_ensemble: True
+#     scale_token: True
+#     encoder_spec:
+#       name: rdn
+#       args:
+#         no_upsampling: true
+
+#     imnet_spec:
+#       name: itnsr_mlp
+#       args:
+#         hidden_list: [256,256,256,256]
+#         act: 'gelu'
+
+
+
+# model:
+#   name: DualRef
+#   args:
+#     encoder_spec:
+#       name: rdn
+#       args:
+#         no_upsampling: true   
+#     imnet_spec:
+#       name: mlp
+#       args:
+#         out_dim: 1
+#         hidden_list: [256, 256, 256]
+#     hidden_dim: 256
+
+
+
+
+
+# model:
+#   name: lmlte
+#   args:
+#     encoder_spec:
+#       name: rct
+#       args:
+#         no_upsampling: True
+#     imnet_spec:
+#       name: lmmlp
+#       args:
+#         out_dim: 1
+#         hidden_dim: 16
+#         hidden_depth: 8
+#         mod_scale: True
+#         mod_shift: True
+#     hypernet_spec:
+#       name: mlp
+#       args:
+#         out_dim: 288
+#         hidden_list: [ 288 ]
+#     hidden_dim: 128
+#     local_ensemble: true
+#     cell_decode: true
+#     mod_input: true
+
+
+
+
+# model:
+#   name: ciaosr
+#   args:
+#     encoder_spec:
+#       name: rdn
+#       args:
+#         no_upsampling: true   
+#     # pe_spec:
+#     #   name: posenc
+#     #   args:
+#     #     posenc_type: 'sinusoid'
+#     #     posenc_scale: 10
+#     #     hidden_dims: 64
+#     #     enc_dims: 64
+#     #     gamma: 1
+#     imnet_q:
+#       name: MLPRefiner
+#       args:
+#         in_dim: 4
+#         out_dim: 1
+#         hidden_list: [256,256, 256, 256]
+#     imnet_k:
+#       name: MLPRefiner
+#       args:
+#         in_dim: 64
+#         out_dim: 64
+#         hidden_list: [256,256, 256, 256]
+#     imnet_v:
+#       name: MLPRefiner
+#       args:
+#         in_dim: 64
+#         out_dim: 64
+#         hidden_list: [256,256, 256, 256]
+
+
+
+    # imnet_spec:
+    #   name: mlp
+    #   args:
+    #     out_dim: 1
+    #     hidden_list: [256, 256, 256]
+    # hidden_dim: 256
+
+# model:
+#   name: ours
+#   args:
+#     encoder_spec:
+#       name: rdn
+#       args:
+#         no_upsampling: true
+
+#     pe_spec_query:
+#       name: posenc
+#       args:
+#         posenc_type: 'sinusoid'
+#         posenc_scale: 16
+#         hidden_dims: 256
+#         enc_dims: 256
+#         gamma: 1
+
+#     pe_spec_coarse:
+#       name: posenc
+#       args:
+#         posenc_type: 'sinusoid'
+#         posenc_scale: 32
+#         hidden_dims: 256
+#         enc_dims: 256
+#         gamma: 1
+
+#     pe_spec_fine:
+#       name: posenc
+#       args:
+#         posenc_type: 'sinusoid'
+#         posenc_scale: 64
+#         hidden_dims: 256
+#         enc_dims: 256
+#         gamma: 1
+
+#     imnet_spec:
+#       name: mlp
+#       args:
+#         out_dim: 1
+#         hidden_list: [256, 256, 256]
+#     hidden_dim: 256
+
+
+
+
+optimizer:
+  name: adam
+  args:
+    lr: 2.e-4
+epoch_max: 1000
+multi_step_lr:
+  # milestones: [50, 80, 90, 95]
+  milestones: [500, 800, 900, 950]
+  # milestones: [200, 400, 600, 800]
+  gamma: 0.5
+
+epoch_val: 1
+epoch_save: 100
+
+resume: ~
+
